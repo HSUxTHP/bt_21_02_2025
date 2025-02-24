@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="book-detail">
+    <div class="book-detail__left">
+      <img [src]="(currentBook | async)?.cover" alt="{{ (currentBook | async)?.title }}" />
+    </div>
+
+    <div class="book-detail__right">
+      <div class="info">
+      <div class="button-group2">
+        <button mat-flat-button [routerLink]="['/']">Quay về trang chủ</button>
+        <button mat-flat-button (click)="goBack()">⬅ Quay lại</button>
+      </div>
+
+      <br>
+
+      <h2>{{ (currentBook | async)?.title }}</h2>
+      <p><strong>Số thứ tự:</strong> {{ (currentBook | async)?.number }}</p>
+      <p><strong>Số trang:</strong> {{ (currentBook | async)?.pages }}</p>
+      <p><strong>Tựa gốc:</strong> {{ (currentBook | async)?.originalTitle }}</p>
+      <p><strong>Ngày phát hành:</strong> {{ (currentBook | async)?.releaseDate }}</p>
+      <p><strong>Chỉ mục:</strong> {{ (currentBook | async)?.index }}</p>
+      <p class="book-detail__desc">{{ (currentBook | async)?.description }}</p>
+      </div>
+      <div class="button-group">
+        <button mat-flat-button [routerLink]="['/detail', ((currentBook | async)?.number ?? 0) - 1]" [disabled]="(currentBook | async)?.number === 1">
+          ⬅ Sách trước đó
+        </button>
+
+        <button mat-flat-button [routerLink]="['/detail', ((currentBook | async)?.number ?? 0) + 1]">
+          Sách tiếp theo ➡
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
